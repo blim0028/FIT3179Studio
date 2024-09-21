@@ -95,7 +95,7 @@ Guatemala,GTM,35162
 Guam,GUM,280
 Guyana,GUY,184061.333
 High income,HIC,10512924.97
-"Hong Kong SAR, China",HKG,
+"Hong Kong SAR, China",HKG,0
 Honduras,HND,63383.1
 Heavily indebted poor countries (HIPC),HPC,5223933.112
 Croatia,HRV,19416.1
@@ -109,7 +109,7 @@ Indonesia,IDN,915276.633
 IDA only,IDX,5082056.912
 Isle of Man,IMN,34.6
 India,IND,724264
-Not classified,INX,
+Not classified,INX,0
 Ireland,IRL,7860.2
 "Iran, Islamic Rep.",IRN,107656.3
 Iraq,IRQ,8250
@@ -145,7 +145,7 @@ Late-demographic dividend,LTE,17607552.09
 Lithuania,LTU,22026.667
 Luxembourg,LUX,887
 Latvia,LVA,34146.6
-"Macao SAR, China",MAC,
+"Macao SAR, China",MAC,0
 St. Martin (French part),MAF,12.4
 Morocco,MAR,57529.567
 Monaco,MCO,0
@@ -260,7 +260,7 @@ Viet Nam,VNM,147189.9
 Vanuatu,VUT,4423
 World,WLD,40449474.74
 Samoa,WSM,1611.9
-Kosovo,XKX,
+Kosovo,XKX,0
 "Yemen, Rep.",YEM,5490
 South Africa,ZAF,170136.9
 Zambia,ZMB,446258.133
