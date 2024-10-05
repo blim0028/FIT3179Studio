@@ -1,0 +1,69 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Forest Area(sq. km) in year 2021",
+    "width": "container",
+    "height": 400,
+    "projection": {"type": "equalEarth"},
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/HomeworkWeek8/js/oceans.topojson",
+          "format": {"type": "topojson", "feature": "oceans"}
+        },
+        "mark":{"type": "geoshape", "fill":"skyblue"}
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/HomeworkWeek8/js/ne_110m.json",
+          "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+        },
+        "transform": [
+          {
+            "lookup": "properties.ADM0_ISO",
+            "from":{
+              "data":{
+                "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/HomeworkWeek8/data/forestArea.csv"
+              },
+              "key": "Country Code",
+              "fields": ["ForestArea"]
+            }
+          },
+        {
+          "lookup": "properties.ISO_A3_EH",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/HomeworkWeek8/data/forestArea.csv"
+            },
+            "key": "Country Code",
+            "fields": ["ForestArea"]
+          }
+        },
+          {"calculate": "isNaN(parseFloat(datum.ForestArea)) || datum.ForestArea === null || datum.ForestArea === 0 ? 0.1 : parseFloat(datum.ForestArea)",
+          "as": "Forest Area (sq. km)"},
+          {
+            "filter": "datum['Forest Area (sq. km)'] > 0"  
+          }
+        ],
+        "mark": {"type": "geoshape"},
+        "encoding": {
+          "color":{
+            "field":"Forest Area (sq. km)",
+            "type": "quantitative",
+            "scale":{"type": "log",
+                      "scheme":"greens"}
+          },
+          "tooltip":[
+            {"field":"properties.NAME", "type": "nominal", "title": "Country"},
+            {"field":"ForestArea", "type": "quantitative"}
+          ]
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/HomeworkWeek8/js/ne_110m_graticules_30.json",
+          "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+        },
+        "mark": {"type": "geoshape", "fill": null, "stroke": "darkgray"}
+      }
+    ]
+  }
