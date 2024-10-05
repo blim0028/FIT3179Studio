@@ -1,0 +1,32 @@
+.pure-g {
+    margin-bottom: 40px;
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.vis-container-map {
+    padding-left: 20px;
+    width: 80%;
+}
+
+.vis-container-bubble {
+    padding-right: 20px;
+    width: 80%;
+}
+
+.pure-u-1-2 {
+    width: 45%; 
+}
+
+body {
+    background-color: bisque;
+}
+
+h1{
+    font-family:sans-serif;
+}
+
+p{  
+    font-size: 20;
+    font-family:cursive;
+}
