@@ -1,0 +1,143 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title":{"text":"Main Field of Study from 2013 to 2023",
+    "fontSize":16},
+    "params": [
+      {
+        "name": "field_selection",
+        "bind":{
+          "input": "select",
+          "options":[
+            null,
+            "Natural and physical sciences",
+            "Information technology",
+            "Engineering and related technologies",
+            "Architecture and building",
+            "Agriculture,  environmental and related studies",
+            "Health",
+            "Education",
+            "Management and commerce",
+            "Society and culture",
+            "Creative arts",
+            "Food,  hospitality and personal services",
+            "Others"
+          ],
+          "labels": [
+            "Show All",
+            "Natural and physical sciences",
+            "Information technology",
+            "Engineering and related technologies",
+            "Architecture and building",
+            "Agriculture, environmental and related studies",
+            "Health",
+            "Education",
+            "Management and commerce",
+            "Society and culture",
+            "Creative arts",
+            "Food, hospitality and personal services",
+            "Others"
+          ],
+          "name": "Select Field of Study"
+        }
+      }
+    ],
+    "vconcat": [
+      { 
+        "data":{
+          "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/Assignment2/data/field_of_study_long.csv"
+        },
+        "width":"container",
+        
+        "transform": [
+          {
+            "calculate": "year(datum.Year)",
+            "as": "Year"
+          },
+          {
+            "filter":{
+              "field": "Year",
+              "oneOf":[2013, 2015, 2017, 2019, 2021, 2023]
+            }
+          },
+          {"filter":"field_selection == null || datum.Mainfieldofeducationofcurrentstudy == field_selection"}
+        ],
+        "layer": [
+          { 
+            "mark":{"type":"line",
+            "point":{
+              "filled": true,
+              "fill":"brown"
+            }},
+            "encoding": {
+              "x":{"field":"Year", "type": "quantitative", "title":"Year",
+              "axis":{
+                "labelFontSize":11,
+                "titleFontSize":13,
+                "tickCount":8,
+                "format":""
+              },
+              "scale":{
+                "domain": [2013, 2023], 
+                  "nice": true
+              }},
+              "y":{"field":"NumberOfStudents", "type": "quantitative", "title":"Number of Students (%)","axis":{
+                "labelFontSize":11,
+                "titleFontSize":13
+              },
+              "scale":{
+                "domain":[0,25]
+              }},
+              "color":{"field":"Mainfieldofeducationofcurrentstudy", "type": "nominal", "title":"Main Field of Study"},
+              "tooltip":[
+                {"field":"Year"},
+                {"field":"Mainfieldofeducationofcurrentstudy", "title":"Main Field Of Study"},
+                {"field":"NumberOfStudents", "title":"Number of Students (%)"}
+              ]
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "align": "center",
+              "dx": 0,   
+              "dy": -15,
+              "fontSize":12,
+              "fontWeight":"bold"
+            },
+            "encoding": {
+              "x": {
+                "field": "Year",
+                "type": "temporal"
+              },
+              "y": {
+                "field": "NumberOfStudents",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "NumberOfStudents",
+                "type": "quantitative"
+              },
+              "color": {
+                "value":"black"
+              },
+              "opacity":{
+                "condition":{
+                  "test":"(datum['Year'] == 2017 && datum['Mainfieldofeducationofcurrentstudy']) == 'Information technology' || (datum['Year'] == 2023 && datum['Mainfieldofeducationofcurrentstudy']) == 'Engineering and related technologies' || (datum['Year'] == 2019 && datum['Mainfieldofeducationofcurrentstudy']) == 'Health' || (datum['Year'] == 2015 && datum['Mainfieldofeducationofcurrentstudy']) == 'Management and commerce' || (datum['Year'] == 2021 && datum['Mainfieldofeducationofcurrentstudy']) == 'Natural and physical sciences'", "value" : 1
+                },
+                "value":0
+              }
+            }
+          }
+        ],
+        "config": {
+          "legend": {
+            "labelFontSize":11,
+            "labelLimit":250,
+            "titleFontSize":14
+          }
+        }
+      }
+      
+    ]
+    
+  }

@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title":{"text":"Field off trade of apprenticeship",
+    "fontSize":16},
+    "width":"container",
+    
+    "data":{
+      "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/Assignment2/data/field_of_trade.csv"
+    },
+    "transform": [
+      {"filter":"datum.FieldOfTrade != 'Total'"}
+    ],
+    "layer": [
+      {
+        "mark":{
+          "type": "arc", "innerRadius":20, "stroke":"grey"
+        }
+      },
+      {
+        "mark":{
+          "type": "text", "radiusOffset":30
+        },
+        "encoding": {
+          "text":{
+            "field":"Proportion", "type": "quantitative",
+          "format": ".1f"
+          }
+        }
+      }
+    ], 
+    "encoding": {
+      "theta": {
+        "field":"Proportion", 
+        "type":"quantitative",
+        "stack":true},
+      "color": {
+        "field":"FieldOfTrade",
+        "type":"nominal",
+        "sort":{
+          "field":"Proportion",
+          "order":"descending"
+        }
+        },
+      "radius": {
+        "field":"Proportion",
+        "scale":{
+          "type": "sqrt",
+          "zero":true,
+          "rangeMin":40
+        }
+      },
+      "tooltip":[
+        {"field":"FieldOfTrade", "title":"Field Of Trade"},
+        {"field":"Proportion", "title":"Number of Students (%)", "format":".1f"}
+      ]
+    }
+    
+  }

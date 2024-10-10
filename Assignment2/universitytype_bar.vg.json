@@ -1,0 +1,68 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text":"Number of Students in Public and Private Universities",
+              "fontSize":24},
+    "width": 800,
+    "height": 600,
+    "data":{
+      "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/Assignment2/data/university_type_students.csv"
+    },
+    "selection":{
+      "type_highlight" : {
+        "type" : "multi",
+        "fields" : ["UniversityType"],
+        "bind" : "legend"
+      }
+    },
+    "mark":"bar",
+    "encoding": {
+      "x":{
+        "field":"State",
+        "type": "nominal",
+        "axis":{"title":"State",
+                "titleFontSize":20,
+                "labelFontSize": 12, 
+                "labelAngle": 45}
+      },
+      "y":{
+        "field":"NumberOfStudents",
+        "type": "quantitative",
+        "axis":{"title":"Number Of Students", 
+                "tickCount":5,
+                "titleFontSize":20,
+                "labelFontSize": 12}
+      },
+      "xOffset":{
+        "field": "UniversityType",
+        "title": "University Type"
+      },
+      "color":{
+        "field":"UniversityType",
+        "title": "University Type",
+        "type": "nominal",
+        "scale":{
+          "domain": ["Public", "Private"],
+          "range": ["#1f77b4", "#ff7f0e"]
+        }
+      },
+      "opacity":{
+        "condition":{ "param": "type_highlight", "value" : 0.9},
+        "value" : 0.2
+      },
+      "tooltip":[
+        {"field":"State", "type": "nominal", "title": "State"},
+        {"field": "UniversityType", "type": "nominal", "title": "Type"},
+        {"field": "NumberOfStudents", "type": "quantitative", "title": "Number of Students"}
+      ]
+    },
+    "config": {
+      "legend": {
+        "labelFontSize": 14, 
+        "titleFontSize": 16   
+      },
+      "tooltipFormat": {
+        "numberFormat": ","
+      }
+      
+    }
+  }
