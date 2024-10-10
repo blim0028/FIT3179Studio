@@ -1,10 +1,10 @@
-﻿State,NumberOfStudents
-New South Wales,726600
-Victoria,588000
-Queensland,410000
-South Australia,136700
-Western Australia,200000
-Tasmania,39500
-Northern Territory,21200
-Australian Capital Territory,47500
-AUST,2169500
+﻿State,NumberOfStudents,Population
+NSW,726.6,6106.2
+VIC,588,5046.9
+QLD,410,3976.1
+SA,136.7,1361.1
+WA,200,2109.1
+TAS,39.5,425.4
+NT,21.2,164.3
+ACT,47.5,347
+AUST,2169.5,19536.1
