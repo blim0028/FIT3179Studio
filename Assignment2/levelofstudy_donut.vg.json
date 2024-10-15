@@ -1,0 +1,53 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title":{"text":"Level of Study in Year 2023",
+    "fontSize":24},
+    "width":600,
+    "height":400,
+    "data":{
+      "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/Assignment2/data/level_of_study.csv"
+    },
+    "transform": [
+      {
+        "calculate": "parseInt(datum.NumberOfStudents)", "as": "newStudents"
+      },
+      {
+        "calculate": "parseFloat(datum.Proportion)", "as": "newProportion"
+      },
+      {
+        "filter":"datum.LevelOfStudy != 'Total'"
+      }
+    ],
+      "mark":{"type": "arc", "innerRadius":160, "stroke":"darkgray"}
+    ,
+    "encoding": {
+      "theta":{
+        "field":"newStudents", "type": "quantitative"
+      },
+      "color":{
+        "field":"LevelOfStudy", "type": "nominal",
+        "condition":{
+          "test":"!(datum.LevelOfStudy == 'Postgraduate Degree' || datum.LevelOfStudy == 'Bachelor Degree' || datum.LevelOfStudy == 'Certificate III/IV')", "value":"lightgray"
+        },
+        "scale":{
+          "domain":["Postgraduate Degree","Bachelor Degree","Certificate III/IV"],
+          "range":"category"
+        },
+        "legend":{
+          "orient": "top",
+          "titleFontSize":16,
+          "labelFontSize":12,
+          "title":"Level Of Study"
+        }
+      },
+      "tooltip":[
+        {"field":"LevelOfStudy", "type": "nominal", "title":"Level Of Study"},
+        {"field":"newStudents", "type": "quantitative", "title":"Number Of Students", "format":","},
+        {"field":"LevelOfStudy", "type": "nominal", "title":"Level Of Study"}
+      ]
+    }
+    
+  
+    
+    
+  }

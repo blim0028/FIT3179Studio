@@ -1,9 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": {"text":"Number of Students in Public and Private Universities",
-              "fontSize":24},
-    "width": 800,
-    "height": 600,
+              "fontSize":26},
+    "width":"container",
+    "height":"400",
     "data":{
       "url": "https://raw.githubusercontent.com/blim0028/FIT3179Studio/refs/heads/main/Assignment2/data/university_type_students.csv"
     },
@@ -20,8 +20,8 @@
         "field":"State",
         "type": "nominal",
         "axis":{"title":"State",
-                "titleFontSize":20,
-                "labelFontSize": 12, 
+                "titleFontSize":18,
+                "labelFontSize": 14, 
                 "labelAngle": 45}
       },
       "y":{
@@ -29,8 +29,8 @@
         "type": "quantitative",
         "axis":{"title":"Number Of Students", 
                 "tickCount":5,
-                "titleFontSize":20,
-                "labelFontSize": 12}
+                "titleFontSize":18,
+                "labelFontSize": 14}
       },
       "xOffset":{
         "field": "UniversityType",
@@ -57,7 +57,7 @@
     },
     "config": {
       "legend": {
-        "labelFontSize": 14, 
+        "labelFontSize": 12 , 
         "titleFontSize": 16   
       },
       "tooltipFormat": {
